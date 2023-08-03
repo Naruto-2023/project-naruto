@@ -1,0 +1,4 @@
+# ignore the below files
+.tar
+.zar
+.zip
