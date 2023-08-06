@@ -8,3 +8,5 @@ try:
 
 except Exception as er:
     print(er)
+
+#janmejay as curse
