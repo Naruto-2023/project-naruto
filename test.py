@@ -1,5 +1,10 @@
-from Global.postgresdb import test1
+import psycopg2
 
-print(test1.name())
+try:
+    conn = psycopg2.connect(host='localhost', dbname='postgres', user='postgres', password='Bantypg', port=5432)
+    print("Success")
 
-print("a")
+    cur = conn.cursor()
+
+except Exception as er:
+    print(er)
