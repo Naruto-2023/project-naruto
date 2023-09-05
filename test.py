@@ -1,6 +1,7 @@
 import psycopg2
 import os
 import pandas as pd
+import re
 
 def conection(user_name,pwd,host_name):
     try:
@@ -17,9 +18,14 @@ def conection(user_name,pwd,host_name):
 def get_col_headers(cur):
     try:
         print("col headers called")
-        cur.execute("SELECT * FROM  public.stud_dtl LIMIT 0 ;")
-        headers = cur.fetchall()
-        print(headers)
+        cur.execute("SELECT column_name  "
+                    "FROM information_schema.columns "
+                    "WHERE table_name = 'stud_dtl' AND  table_schema = 'public';")
+        headers=[]
+        # So while we are fetching the col headers the data are coming like ('studrollno'), as a tuple
+         # for this reason we used regular expression library here to remove the (' from the string
+        for col_head in cur.fetchall():
+            headers.append(re.sub(r"[^a-zA-Z0-9 ]", "", str(col_head)))
         return headers
 
     except Exception as er:
@@ -28,7 +34,7 @@ def get_sql_data(cur):
     try:
         cur.execute("SELECT * FROM public.stud_dtl;")
         data = cur.fetchall()
-        print(data)
+        #print(data)
         return data
 
     except Exception as er:
@@ -44,7 +50,6 @@ def do_start():
     cur = conection(user_name,pwd,host_name)
     #step: 2
     headers = get_col_headers(cur)
-    print(headers)
 
     #step: 3
     data = get_sql_data(cur)
@@ -55,5 +60,6 @@ def do_start():
 
 if __name__ == '__main__':
     do_start()
+
 
 
