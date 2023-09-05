@@ -11,7 +11,6 @@ def conection(user_name,pwd,host_name):
         cur = conn.cursor()
 
         return cur
-
     except Exception as er:
         print(er)
 
