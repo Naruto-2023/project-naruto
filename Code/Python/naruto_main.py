@@ -8,7 +8,7 @@ import configparser
 import naruto_email_1
 
 LOCAL_CONFIG_FILE = os.path.abspath(os.path.join(os.path.dirname(__file__),'..','Config/Config.cnf'))
-
+#
 
 #additional attachment of utility file
 
