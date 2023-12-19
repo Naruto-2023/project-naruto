@@ -8,3 +8,10 @@ email_archive_location = C:/Users/sseth/Desktop/naruto-001/input_file/recyclebin
 user_id = naruto2023india@gmail.com
 password = nnwtlhdskuqmzqzf
 
+[POSTGRES_DB]
+schema = school_db
+host = 13.233.4.5
+db_name = postgres
+user_name = postgres
+pwd = Naruto2023
+table_names = stud_info,parents_info,class_10,class_9,lass_8,class_7,class_6
